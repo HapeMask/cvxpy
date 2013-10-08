@@ -16,8 +16,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with CVXPY.  If not, see <http://www.gnu.org/licenses/>.
 """
-
-import matrix_utilities as intf
 import abc
 
 class BaseMatrixInterface(object):
@@ -75,6 +73,10 @@ class BaseMatrixInterface(object):
     # Add the block to the matrix at the given offset.
     def block_add(self, matrix, block, vert_offset, horiz_offset, rows, cols, 
                   vert_step=1, horiz_step=1):
+
+        # Importing here avoids circular dependencies.
+        import matrix_utilities as intf
+
         # If the block is a scalar, promote it.
         if intf.is_scalar(block):
             block = self.scalar_matrix(intf.scalar_value(block), rows, cols)
