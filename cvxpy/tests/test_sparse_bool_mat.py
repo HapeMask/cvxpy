@@ -30,7 +30,7 @@ class TestSparseBoolMat(object):
         n = 4
         # Vectors.
         self.arr = np.array(n*[True])
-        self.mixed_arr = np.array(n/2 * [True, False])
+        self.mixed_arr = np.array(n//2 * [True, False])
         self.true_vec = BoolMat(self.arr)
         self.false_vec = BoolMat(~self.arr)
 

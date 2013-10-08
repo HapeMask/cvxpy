@@ -84,7 +84,7 @@ class Key(object):
         dims = []
         for i in range(2):
             stop = Key.get_stop(key[i], exp.size[i])
-            dims.append(1 + (stop-1-key[i].start)/key[i].step)
+            dims.append(1 + (stop-1-key[i].start)//key[i].step)
         return tuple(dims)
 
     # Converts a key (i.e. two slices) to a string.
