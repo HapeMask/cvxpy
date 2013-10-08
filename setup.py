@@ -1,5 +1,11 @@
 from distutils.core import setup
 
+# Enables automatic conversion to Python 3.x code if needed.
+try:
+    from distutils.command.build_py import build_py_2to3 as build_py
+except ImportError:
+    from distutils.command.build_py import build_py
+
 setup(
     name='cvxpy',
     version='0.1',
@@ -25,5 +31,6 @@ setup(
     description='A domain-specific language for modeling convex optimization problems in Python.',
     long_description=open('README.md').read(),
     requires = ["cvxopt(>= 1.1.6)",
-                "ecos(>=1.0)"] # this doesn't appear to do anything unfortunately
+                "ecos(>=1.0)"], # this doesn't appear to do anything unfortunately
+    cmdclass = {'build_py' : build_py}
 )
