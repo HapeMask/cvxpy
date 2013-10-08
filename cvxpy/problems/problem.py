@@ -156,7 +156,7 @@ class Problem(object):
             primal_val = results['info']['pcost']
         
         if status == s.SOLVED:
-            self.save_values(results['x'], sorted(var_offsets.keys()))
+            self.save_values(results['x'], sorted(var_offsets.keys(), key = lambda v : id(v)))
             self.save_values(results['y'], constr_map[s.EQ])
             if constr_map[s.NONLIN]:
                 self.save_values(results['zl'], constr_map[s.INEQ])
@@ -175,7 +175,7 @@ class Problem(object):
         # Eliminate duplicate ids and sort variables.
         var_offsets = {}
         vert_offset = 0
-        for var in sorted(vars):
+        for var in sorted(vars, key = lambda v : id(v)):
             if var not in var_offsets:
                 var_offsets[var] = vert_offset
                 vert_offset += var.size[0]*var.size[1]
