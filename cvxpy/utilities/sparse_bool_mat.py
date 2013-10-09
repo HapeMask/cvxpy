@@ -79,6 +79,9 @@ class SparseBoolMat(BoolMat):
         else:
             return NotImplemented
 
+    def __hash__(self):
+        return id(self)
+
     # Utility function to convert a SparseBoolMat to a BoolMat.
     def todense(self):
         dense = self.value.astype('int64').todense() # Must be int64 for todense().

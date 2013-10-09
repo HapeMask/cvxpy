@@ -97,6 +97,9 @@ class Sign(object):
     def __eq__(self, other):
         return self.neg_mat == other.neg_mat and self.pos_mat == other.pos_mat
 
+    def __hash__(self):
+        return id(self)
+
     # Promotes neg_mat and pos_mat to BoolMats of the given size.
     def promote(self, size):
         neg_mat = BoolMat.promote(self.neg_mat, size)

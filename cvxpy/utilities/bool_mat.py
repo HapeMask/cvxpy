@@ -113,6 +113,9 @@ class BoolMat(object):
         else:
             return NotImplemented
 
+    def __hash__(self):
+        return id(self)
+
     # To string methods.
     def __repr__(self):
         return str(self.value)

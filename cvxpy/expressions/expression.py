@@ -170,3 +170,6 @@ class Expression(u.Canonicalizable):
     @cast_other
     def __ge__(self, other):
         return other.__le__(self)
+
+    def __hash__(self):
+        return id(self)

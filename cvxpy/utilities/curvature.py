@@ -131,6 +131,9 @@ class Curvature(object):
     def __eq__(self, other):
         return self.cvx_mat == other.cvx_mat and self.conc_mat == other.conc_mat
 
+    def __hash__(self):
+        return id(self)
+
     # Promotes cvx_mat and conc_mat to BoolMats of the given size.
     def promote(self, size):
         cvx_mat = BoolMat.promote(self.cvx_mat, size)
